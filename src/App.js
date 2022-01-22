@@ -1,25 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
+import { Content } from './content'
+import { useState, useEffect } from 'react'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const buildClassname = counter => `App ${counter % 2 === 0 ? "blue" : "red"}`
+
+const makeHandleChange = setPassword => {
+  console.log('Making function')
+
+  return event => {
+    console.log(event.target)
+
+    return setPassword(event.target.value);
+  };
 }
 
-export default App;
+export const App = () => {
+  const [counter, setCounter] = useState(0)
+  const [password, setPassword] = useState("")
+
+  useEffect(() => {
+    console.log(password)
+  }, [password])
+
+  return <div>
+    <Content />
+  </div>
+}
+
