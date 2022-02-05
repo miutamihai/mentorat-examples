@@ -1,29 +1,15 @@
-import './App.css';
-import { Content } from './content'
-import { useState, useEffect } from 'react'
-
-const buildClassname = counter => `App ${counter % 2 === 0 ? "blue" : "red"}`
-
-const makeHandleChange = setPassword => {
-  console.log('Making function')
-
-  return event => {
-    console.log(event.target)
-
-    return setPassword(event.target.value);
-  };
-}
+import { Image } from "./image"
+import { useState } from "react"
+import { Content } from "./content"
+import { Success } from "./success"
 
 export const App = () => {
-  const [counter, setCounter] = useState(0)
-  const [password, setPassword] = useState("")
+    const [submitted, setSubmitted] = useState(false)
+    const [success, setSuccess] = useState(false)
 
-  useEffect(() => {
-    console.log(password)
-  }, [password])
-
-  return <div>
-    <Content />
-  </div>
+    return <div className={'d-flex w-100 h-100'}>
+        <Image />
+        {!success && <Content submitted={submitted} setSubmitted={setSubmitted} setSuccess={setSuccess} />}
+        {success && <Success setSubmitted={setSubmitted} setSuccess={setSuccess} />}
+    </div>
 }
-
