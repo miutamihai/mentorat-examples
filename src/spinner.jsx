@@ -1,6 +1,9 @@
 import { useEffect } from "react";
+import { useAppContext } from "./context";
 
-export const Spinner = ({setSuccess}) => {
+export const Spinner = () => {
+    const {setSuccess} = useAppContext()
+
     useEffect(() => {
         setTimeout(() => setSuccess(true), 2000)
     }, [setSuccess])

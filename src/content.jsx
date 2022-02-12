@@ -1,6 +1,11 @@
+import { useAppContext } from "./context"
 import { Form } from "./form"
 import { Spinner } from "./spinner"
 
-export const Content = ({submitted, setSubmitted, setSuccess}) => submitted 
-    ? <Spinner setSuccess={setSuccess} /> 
-    : <Form setSubmitted={setSubmitted} />
+export const Content = () => {
+    const {submitted} = useAppContext()
+
+    return submitted
+        ? <Spinner />
+        : <Form />
+}
