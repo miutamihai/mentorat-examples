@@ -1,10 +1,12 @@
 import { Image } from "./image"
 import { Content } from "./content"
 import { Success } from "./success"
-import { useAppContext } from "./context"
+import { useSelector } from "react-redux"
+
+const useSuccess = () => useSelector(state => state.success)
 
 export const App = () => {
-    const {success} = useAppContext()
+    const success = useSuccess()
 
     return <div className={'d-flex w-100 h-100'}>
         <Image />
